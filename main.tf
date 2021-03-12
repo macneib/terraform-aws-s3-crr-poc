@@ -1,11 +1,14 @@
-terraform {
-  # This module is now only being tested with Terraform 0.13.x. However, to make upgrading easier, we are setting
-  # 0.12.26 as the minimum version, as that version added support for required_providers with source URLs, making it
-  # forwards compatible with 0.13.x code.
-  required_version = ">= 0.12.26"
+module "us_east_2_bucket_module" {
+    source = "./modules/us-east-2"
+    # provider_alias = "us-east-2"
 }
 
-# website::tag::1:: The simplest possible Terraform module: it just outputs "Hello, World!"
-output "hello_world" {
-  value = "Hello, World!"
+module "us_west_2_bucket_module" {
+    source = "./modules/us-west-2"
+    # provider_alias = "us-west-2"
+}
+
+module "eu_west_2_bucket_module" {
+    source = "./modules/eu-west-2"
+    # provider_alias = "eu-west-2"
 }
