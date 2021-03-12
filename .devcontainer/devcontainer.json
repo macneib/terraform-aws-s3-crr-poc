@@ -1,0 +1,21 @@
+{
+    "name": "terraform-codespaces",
+    "settings": {
+      "terminal.integrated.shell.linux": "/bin/zsh"
+  },
+    "extensions": [
+      "eamodio.gitlens",
+      "davidanson.vscode-markdownlint",
+      "hashicorp.terraform",
+      "ms-azuretools.vscode-docker"
+    ],
+  "postCreateCommand": "/bin/bash ./.devcontainer/post-install.sh",
+  "build": {
+      "dockerfile": "Dockerfile",
+      "args": {
+          "VARIANT": "3.12"
+      }
+  },
+  "remoteUser": "vscode"
+  }
+  
