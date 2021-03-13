@@ -3,6 +3,10 @@ variable bucket_region {}
 variable bucket_name {}
 variable bucket_regions {}
 
+
+data "aws_iam_role" "bucket_role_arn" {
+  name = var.bucket_name
+}
 resource "aws_s3_bucket" "bucket" {
   bucket = "${var.bucket_name}-${var.bucket_region}"
   acl    = "private"
@@ -13,7 +17,7 @@ resource "aws_s3_bucket" "bucket" {
   }
 
   replication_configuration {
-    role = "arn:aws:iam::473648414978:role/${var.bucket_name}-role"
+    role = data.aws_iam_role.bucket_role_arn.arn
 
     rules {
       id       = "repl-rule-${var.bucket_region}-to-${lookup(var.bucket_regions, var.bucket_region).repl_destination_p1}"

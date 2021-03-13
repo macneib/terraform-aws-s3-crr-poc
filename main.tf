@@ -1,8 +1,7 @@
 locals {
     regions = ["us-east-2", "us-west-2", "eu-west-2"]
-    bucket_name = "tf-cosmic-bucket-12345"   
+    name = "tf-cosmic-12345"   
 }
-
 variable "bucket_regions" {
   default = {
     "us-east-2" = {
@@ -46,7 +45,7 @@ module "us_east_2_bucket_module" {
   providers = {
     aws = aws.usw2
   }
-  bucket_name = local.bucket_name
+  bucket_name = local.name
   bucket_region = "us-west-2"
   bucket_regions = var.bucket_regions
 }
@@ -56,9 +55,9 @@ module "us_west_2_bucket_module" {
   providers = {
     aws = aws.use2
   }
-  bucket_name = local.bucket_name
-    bucket_region = "us-east-2"
-    bucket_regions = var.bucket_regions
+  bucket_name = local.name
+  bucket_region = "us-east-2"
+  bucket_regions = var.bucket_regions
 }
 
 module "eu_west_2_bucket_module" {
@@ -66,7 +65,13 @@ module "eu_west_2_bucket_module" {
   providers = {
     aws = aws.euw2
   }
-  bucket_name = local.bucket_name
+  bucket_name = local.name
   bucket_region = "eu-west-2"
   bucket_regions = var.bucket_regions
 }
+
+
+
+
+
+
