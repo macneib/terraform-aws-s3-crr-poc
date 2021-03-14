@@ -1,6 +1,6 @@
 locals {
     regions = ["us-east-2", "us-west-2", "eu-west-2"]
-    name = "tf-cosmic-12345"   
+    name = "tf-cosmic-12345"
 }
 variable "bucket_regions" {
   default = {
@@ -10,7 +10,7 @@ variable "bucket_regions" {
       "repl_destination_p2" = "eu-west-2"
     },
     "us-west-2" = {
-      "region_alias"        = "aws.uswest2"  
+      "region_alias"        = "aws.uswest2"
       repl_destination_p1   = "us-east-2"
       repl_destination_p2   = "eu-west-2"
     },
