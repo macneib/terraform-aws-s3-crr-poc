@@ -43,3 +43,9 @@ resource "aws_s3_bucket" "bucket" {
     }
   }
 }
+
+
+# output "this_s3_bucket_id "{
+#   description = "The name of the bucket."
+#   value = aws_s3_bucket.
+# }
