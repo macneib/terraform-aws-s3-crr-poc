@@ -16,7 +16,7 @@ done
 echo -n "$LATEST"
 }
 
-VERSION=0.12.26
+VERSION=0.14.7
 
 cd ~
 wget "https://releases.hashicorp.com/terraform/"$VERSION"/terraform_"$VERSION"_linux_amd64.zip"

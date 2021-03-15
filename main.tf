@@ -40,6 +40,18 @@ provider "aws" {
   region = "eu-west-2"
 }
 
+
+module "eu_west_2_bucket_module" {
+  source = "./modules/s3"
+  providers = {
+    aws = aws.euw2
+  }
+  bucket_name = local.name
+  bucket_region = "eu-west-2"
+  bucket_regions = var.bucket_regions
+  depends_on = [aws_iam_role.replication]
+}
+
 module "us_east_2_bucket_module" {
   source = "./modules/s3"
   providers = {
@@ -48,6 +60,7 @@ module "us_east_2_bucket_module" {
   bucket_name = local.name
   bucket_region = "us-west-2"
   bucket_regions = var.bucket_regions
+  depends_on = [aws_iam_role.replication]
 }
 
 module "us_west_2_bucket_module" {
@@ -58,17 +71,10 @@ module "us_west_2_bucket_module" {
   bucket_name = local.name
   bucket_region = "us-east-2"
   bucket_regions = var.bucket_regions
+  depends_on = [aws_iam_role.replication]
 }
 
-module "eu_west_2_bucket_module" {
-  source = "./modules/s3"
-  providers = {
-    aws = aws.euw2
-  }
-  bucket_name = local.name
-  bucket_region = "eu-west-2"
-  bucket_regions = var.bucket_regions
-}
+
 
 
 
